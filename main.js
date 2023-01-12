@@ -32,10 +32,8 @@ form.addEventListener("submit", (e) => {
 
 let formValidity = function valid() {
   if (textInput.value === "") {
-    console.log("failure");
     alert("error")
   } else {
-    console.log("success");
     acceptData();
     add.click();
 
