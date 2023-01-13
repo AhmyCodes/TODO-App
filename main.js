@@ -20,8 +20,7 @@ let formValidity = function formValid() {
 
 let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
-let textarea = document.getElementById("textarea");
-let msg = document.getElementById("msg");
+let textarea = document.getElementById("textArea");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 
@@ -31,16 +30,16 @@ form.addEventListener("submit", (e) => {
 });
 
 let formValidity = function valid() {
-  if (textInput.value === "") {
+  if (textInput.value === "" || textarea.value === "") {
     alert("error")
   } else {
     acceptData();
-    add.click();
+   add.click();
 
   }
 };
 
-let data = {};
+let data = [];
 
 let acceptData = () => {
   data.push({
@@ -74,8 +73,6 @@ let deleteTask = (e) => {
   e.parentElement.parentElement.remove();
   data.splice(e.parentElement.parentElement.id, 1);
   localStorage.setItem("data", JSON.stringify(data));
-  console.log(data);
-  
 };
 
 let editTask = (e) => {
@@ -88,9 +85,5 @@ let editTask = (e) => {
 };
 
 
-(() => {
-  data = JSON.parse(localStorage.getItem("data")) || []
-  console.log(data);
-  createTasks();
-})();
+
 
