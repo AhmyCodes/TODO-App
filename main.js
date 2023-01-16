@@ -23,6 +23,9 @@ let textInput = document.getElementById("textInput");
 let textarea = document.getElementById("textArea");
 let tasks = document.getElementById("tasks");
 let alphanumeric = /[^0-9a-zA-Z]$/
+let button = document.getElementById("ks")
+
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,7 +35,7 @@ form.addEventListener("submit", (e) => {
 let formValidity = function valid() {
   if (textInput.value === "" || textarea.value === "") {
     alert("error")
-  } else if (textInput.value.length > 5 || textarea.value.length > 5) {
+  } else if (textInput.value.length > 5 || textarea.value.length > 50) {
     alert("error")
   } else if (textInput.value.match(alphanumeric)) {
     alert("Character not allowed")
@@ -76,12 +79,20 @@ let createTasks = () => {
           <i onClick ="deleteTask(this)" class="fas fa-trash-alt"></i>
         </span>
         </div>
+
     `);
   });
   restart()
 };
 
 
+button.onclick = function deleteAll() {
+  document.getElementById("tasks").innerHTML = "";
+}
+
+let deleteAll = function reset(data) {
+  localStorage.remove("data")
+}
 
 let deleteTask = (e) => {
   e.parentElement.parentElement.remove();
