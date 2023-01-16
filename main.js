@@ -88,6 +88,7 @@ let createTasks = () => {
 
 button.onclick = function deleteAll() {
   document.getElementById("tasks").innerHTML = "";
+  localStorage.removeItem("data", JSON.stringify(data));
 }
 
 let deleteAll = function reset(data) {
