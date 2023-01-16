@@ -22,7 +22,7 @@ let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
 let textarea = document.getElementById("textArea");
 let tasks = document.getElementById("tasks");
-
+let alphanumeric = /[^0-9a-zA-Z]$/
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,10 +32,21 @@ form.addEventListener("submit", (e) => {
 let formValidity = function valid() {
   if (textInput.value === "" || textarea.value === "") {
     alert("error")
+  } else if (textInput.value.length > 5 || textarea.value.length > 5) {
+    alert("error")
+  } else if (textInput.value.match(alphanumeric)) {
+    alert("Character not allowed")
   } else {
     acceptData();
+    add.setAttribute("data-bs-dismiss", "modal");
+    add.click();
+
+    (() => {
+      add.setAttribute("data-bs-dismiss", "");
+    })();
   }
-};
+ }
+
 
 let data = [];
 
@@ -51,8 +62,9 @@ let acceptData = () => {
   createTasks();
 };
 
+
 let createTasks = () => {
-  tasks.innerHTML === "";
+  tasks.innerHTML = "";
   data.map((x, y) => {
     return (tasks.innerHTML += `
     <div id=${y}>
@@ -68,6 +80,7 @@ let createTasks = () => {
   });
   restart()
 };
+
 
 let deleteTask = (e) => {
   e.parentElement.parentElement.remove();
@@ -85,12 +98,13 @@ let editTask = (e) => {
 };
 
 let restart = function re() {
-  textInput.value === "";
-  textarea.value === "";
+  textInput.value = "";
+  textarea.value = "";
 }
 
 let refresh = function ne() {
-  data = localStorage.getItem("data")
+  data = JSON.parse(localStorage.getItem("data")) || []
   createTasks();
-}
+};
 
+refresh();
