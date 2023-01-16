@@ -22,7 +22,7 @@ let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
 let textarea = document.getElementById("textArea");
 let tasks = document.getElementById("tasks");
-let add = document.getElementById("add");
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -34,8 +34,6 @@ let formValidity = function valid() {
     alert("error")
   } else {
     acceptData();
-   add.click();
-
   }
 };
 
@@ -54,6 +52,7 @@ let acceptData = () => {
 };
 
 let createTasks = () => {
+  tasks.innerHTML === "";
   data.map((x, y) => {
     return (tasks.innerHTML += `
     <div id=${y}>
@@ -67,6 +66,7 @@ let createTasks = () => {
         </div>
     `);
   });
+  restart()
 };
 
 let deleteTask = (e) => {
@@ -84,6 +84,13 @@ let editTask = (e) => {
   deleteTask(e);
 };
 
+let restart = function re() {
+  textInput.value === "";
+  textarea.value === "";
+}
 
-
+let refresh = function ne() {
+  data = localStorage.getItem("data")
+  createTasks();
+}
 
