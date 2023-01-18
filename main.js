@@ -35,7 +35,7 @@ form.addEventListener("submit", (e) => {
 let formValidity = function valid() {
   if (textInput.value === "" || textarea.value === "") {
     alert("error...Please input values")
-  } else if (textInput.value.length > 5 || textarea.value.length > 50) {
+  } else if (textInput.value.length > 15 || textarea.value.length > 50) {
     alert("error...adhere to character limit")
   } else if (textInput.value.match(alphanumeric)) {
     alert("Character not allowed")
@@ -92,7 +92,7 @@ button.onclick = function deleteAll() {
 }
 
 let deleteAll = function reset(data) {
-  localStorage.remove("data")
+  localStorage.removeItem("data")
 }
 
 let deleteTask = (e) => {
