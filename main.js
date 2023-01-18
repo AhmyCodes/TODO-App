@@ -22,7 +22,7 @@ let form = document.getElementById("form");
 let textInput = document.getElementById("textInput");
 let textarea = document.getElementById("textArea");
 let tasks = document.getElementById("tasks");
-let alphanumeric = /[^0-9a-zA-Z]$/
+let alphanumeric = /^[a-zA-Z0-9_ ]$/
 let button = document.getElementById("ks")
 
 
