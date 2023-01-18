@@ -34,9 +34,9 @@ form.addEventListener("submit", (e) => {
 
 let formValidity = function valid() {
   if (textInput.value === "" || textarea.value === "") {
-    alert("error")
+    alert("error...Please input values")
   } else if (textInput.value.length > 5 || textarea.value.length > 50) {
-    alert("error")
+    alert("error...adhere to character limit")
   } else if (textInput.value.match(alphanumeric)) {
     alert("Character not allowed")
   } else {
